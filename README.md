@@ -1,4 +1,4 @@
-# Yggtorrent Tracker Fixerr
+# YggTorrent Tracker Fixerr
 
 <div align="center">
 
@@ -24,17 +24,18 @@
 
 ## Why
 
-When trying to automate downloads from YggTorrent, difficult to choose :
+When trying to automate downloads from YggTorrent, you have mainly two options :
 
-* automate connection to YggTorrent and bypassing cloudflare, even [Prowlarr team gave up](https://github.com/Prowlarr/Prowlarr/issues/2479)
-* using YggAPI but you have to give your secret passkey to someone you don't know.
+* try to automate connection to YggTorrent and bypass cloudflare, even [Prowlarr team gave up](https://github.com/Prowlarr/Prowlarr/issues/2479)
+* use YggAPI but you have to give your secret passkey to someone you don't know.
 
-Yggtorrent-tracker-fixerr is another way, the better of both : still using YggAPI but with a random passkey, yggtorrent-
-tracker-fixerr will plug-in to sonarr and radarr to automatically updates your torrents with the right passkey (only on
-QBittorrent for now, contributions welcome !). It has other features too to keep life simple when using YggTorrent in a
-arr stack.
+YggTorrent Tracker Fixerr is another way, the better of both. You can still use YggAPI but with a random passkey,
+this tool will update the passkey in your torrents with the right one on-the-fly (only on QBittorrent for now,
+contributions welcome !) with a webhook automatically pushed to sonarr and radarr to get a notification
+when a new torrent is added, it will check if the torrent is a yggtorrent one and update the passkey. It has other features
+too to keep life simple when using YggTorrent in a arr stack.
 
-If you want to have notifications on project updates, click on the Watch button on the top right of Github project page
+If you want to have notifications on project updates, click on the `Watch` button on the top right of Github project page
 and select "Custom > Releases & Security Alerts". Please also add a star if you use the project : it helps me track its
 popularity and the effort I should put in.
 
@@ -43,10 +44,10 @@ popularity and the effort I should put in.
 ## Features
 
 * Update all torrents that have yggtorrent trackers
-* Can update on-the-fly torrents via API
-* Webhook registration for Sonarr and Radarr
-* Dynamic settings for trackers, fetched from url or on disk
-* cronjobs to fetch settings and update all torrents on a regular basis
+* Can update on-the-fly torrents via API/Webhook trigger
+* Automatic webhook registration for Sonarr and Radarr, so they can notify YggTorrent Tracker Fixer on new torrents
+* Dynamic settings for trackers, fetched from url or on disk to keep them updated
+* Cronjobs to fetch settings and update all torrents on a regular basis
 * Fully configurable using env var or secrets (/run/secrets)
 * Tweaking connection to third party tools : proxy, custom CA
 
