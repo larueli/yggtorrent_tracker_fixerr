@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Python 3 Classic",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/python:2-3.14-trixie",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers-extra/features/uv:1": {},
+		"ghcr.io/devcontainers-extra/features/markdownlint-cli2:1": {},
+		"ghcr.io/larueli/devcontainer-feature-updatecli/updatecli:1": {},
+		"ghcr.io/jsburckhardt/devcontainer-features/gitleaks:1": {}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "/usr/local/bin/uv sync --dev --frozen && /usr/local/bin/uv run pre-commit install --hook-type commit-msg --hook-type pre-push --hook-type pre-commit",
+
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"python.defaultInterpreterPath": "./.venv/bin/python",
+				"python.terminal.activateEnvironment": true,
+				"editor.rulers": [120]
+			},
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"aaron-bond.better-comments",
+				"vivaxy.vscode-conventional-commits",
+				"mhutchie.git-graph",
+				"github.vscode-github-actions",
+				"ms-vscode.makefile-tools",
+				"pycqa.bandit-pycqa",
+				"charliermarsh.ruff",
+				"ms-python.mypy-type-checker",
+				"DavidAnson.vscode-markdownlint",
+				"ms-azuretools.vscode-containers"
+			]
+		}
+	},
+
+	"remoteUser": "vscode",
+	"updateRemoteUserUID": true
+}

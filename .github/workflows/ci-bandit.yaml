@@ -1,0 +1,19 @@
+name: ci - Bandit security check
+
+on:
+  push:
+    branches:
+        - "main"
+    tags:
+      - "*"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  bandit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: ./.github/actions/bootstrap
+      - run: uv run bandit -r *.py yggtorrent_tracker_fixerr

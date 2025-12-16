@@ -1,0 +1,93 @@
+# Yggtorrent Tracker Fixerr
+
+<div align="center">
+
+[![python](https://img.shields.io/badge/python-3.14-202235.svg?logo=python&labelColor=202235&color=edb641&logoColor=edb641)](https://www.python.org/)
+[![uv](https://img.shields.io/badge/package_manager-uv-202235.svg?logo=uv&labelColor=202235&color=edb641&logoColor=edb641)](https://docs.astral.sh/uv/)
+[![httpx](https://img.shields.io/badge/http_client-httpx-202235.svg?logo=web&labelColor=202235&color=edb641&logoColor=edb641)](https://www.python-httpx.org/)
+[![litestar](https://img.shields.io/badge/api_server-%E2%AD%90%20_litestar-202235.svg?labelColor=202235&color=edb641&logoColor=edb641)](https://github.com/litestar-org/litestar)
+[![asyncio](https://img.shields.io/badge/task_scheduler-asyncio-202235.svg?logo=star&labelColor=202235&color=edb641&logoColor=edb641)](https://docs.python.org/3/library/asyncio.html)
+[![pydantic](https://img.shields.io/badge/settings-pydantic-202235.svg?logo=pydantic&labelColor=202235&color=edb641&logoColor=edb641)](https://docs.pydantic.dev/latest/concepts/pydantic_settings/)
+
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgree.svg?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![Commitizen](https://img.shields.io/badge/conventional_commits-commitizen-brightgreen.svg)](https://commitizen-tools.github.io/commitizen/)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+[![security: pip-audit](https://img.shields.io/badge/security-pip--audit-yellow.svg)](https://github.com/pypa/pip-audit)
+[![types - Mypy](https://img.shields.io/badge/types-Mypy-202235.svg?logo=python&labelColor=202235&color=edb641&logoColor=edb641)](https://github.com/python/mypy)
+[![linting - Ruff](https://img.shields.io/endpoint.svg?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json&labelColor=202235)](https://github.com/astral-sh/ruff)
+[![code style - Ruff](https://img.shields.io/endpoint.svg?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/format.json&labelColor=202235)](https://github.com/astral-sh/ruff)
+[![dependabot](https://img.shields.io/badge/dependabot-enabled-025E8C.svg?logo=dependabot&logoColor=white)](https://github.com/dependabot)
+[![updatecli](https://img.shields.io/badge/updatecli-enabled-025E8C.svg)](https://www.updatecli.io/)
+
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3--only-yellow.svg)](https://opensource.org/licenses/)
+</div>
+
+## Why
+
+When trying to automate downloads from YggTorrent, difficult to choose :
+
+* automate connection to YggTorrent and bypassing cloudflare, even [Prowlarr team gave up](https://github.com/Prowlarr/Prowlarr/issues/2479)
+* using YggAPI but you have to give your secret passkey to someone you don't know.
+
+Yggtorrent-tracker-fixerr is another way, the better of both : still using YggAPI but with a random passkey, yggtorrent-
+tracker-fixerr will plug-in to sonarr and radarr to automatically updates your torrents with the right passkey (only on
+QBittorrent for now, contributions welcome !). It has other features too to keep life simple when using YggTorrent in a
+arr stack.
+
+If you want to have notifications on project updates, click on the Watch button on the top right of Github project page
+and select "Custom > Releases & Security Alerts". Please also add a star if you use the project : it helps me track its
+popularity and the effort I should put in.
+
+*Note : this project or maintainer has no link with other arr products (like Sonarr and Radarr), nor with YggTorrent.*
+
+## Features
+
+* Update all torrents that have yggtorrent trackers
+* Can update on-the-fly torrents via API
+* Webhook registration for Sonarr and Radarr
+* Dynamic settings for trackers, fetched from url or on disk
+* cronjobs to fetch settings and update all torrents on a regular basis
+* Fully configurable using env var or secrets (/run/secrets)
+* Tweaking connection to third party tools : proxy, custom CA
+
+## Installation
+
+* Configure Prowlarr with YggAPI, set a random passkey
+* To install yggtorrent-tracker-fixerr, create a folder and go in it : `mkdir yggtorrent-tracker-fixerr && cd yggtorrent-tracker-fixerr`
+* Download the docker-compose.yml : `wget https://raw.githubusercontent.com/larueli/yggtorrent_tracker_fixerr/refs/heads/main/docker-compose.yml`
+* Edit it to input your passkey (the real one !), your connection settings to your QBittorrent instance, the settings to
+connect to sonarr/radarr (technically optional, but required to automatically create webhooks which allows sonarr/radarr
+to trigger yggtorrent-tracker-fixerr on new downloads)
+* Run : `docker compose up -d --pull --remove-orphans`
+* Enjoy !
+
+## Backup
+
+This project itself doesn't store any data, so nothing to really backup. You should backup your docker-compose.yml to
+easily redeploy in case of disaster recovery. Beware, secret data like API keys are in the docker-compose.yml. It is
+highly suggested to encrypt your backup.
+
+## Update
+
+* Copy your docker-compose.yml
+* Read release notes to see if there is any change in env values. In doubt reinstall from scratch as the project doesn't
+store any data at all.
+* `docker compose up -d --pull --remove-orphans`
+
+## Contribute
+
+Every contribution is welcome ! Check the top badges to see the libraries used in this project, you should have a basic
+understanding of git, Python and object oriented programming. This project uses precommit, commitizen and automated test.
+
+It is strongly recommended to use the devcontainers provided, as they provide all the toolset required to work on the project
+really easily. Use the `classic` if you don't know which one to choose, or `rootless` if using docker-rootless or podman.
+
+Code, text, docs should be written in English.
+
+One thing to do should be implementing new torrent clients (ruTorrent, ...) that implements the `TorrentClient` class
+
+## License
+
+This project is licensed under the GNU GPLv3 License — see the [LICENSE](./LICENSE) file for details.
+
+© 2025 Ivann LARUELLE

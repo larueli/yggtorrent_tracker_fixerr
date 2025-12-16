@@ -1,0 +1,10 @@
+# https://github.com/DavidAnson/markdownlint/blob/main/schema/markdownlint-config-schema.json
+
+MD013:
+  # Number of characters
+  line_length: 120
+
+MD033:
+  # Allowed elements
+  allowed_elements:
+    - "div"

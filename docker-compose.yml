@@ -1,0 +1,67 @@
+services:
+  application:
+    image: ghcr.io/larueli/yggtorrent_tracker_fixerr
+    environment:
+      # API for webhook from sonarr and radarr and app health monitoring
+      # LISTEN_HOST: "0.0.0.0"
+      # LISTEN_PORT: "8000"
+
+      # one of DEBUG, INFO, WARNING, ERROR
+      # LOG_LEVEL: "INFO"
+
+      # https://www.yggtorrent.top/user/settings
+      # http://tracker.p2p-world.net:8080/YGGTORRENT_PASSKEY/announce
+      YGGTORRENT_PASSKEY: ""
+      # used for webhooks and api access except /healthz
+      API_KEY: ""
+      # must be one of QBITTORRENT,
+      TORRENT_CLIENT: "QBITTORRENT"
+      # no trailing slash
+      QBITTORRENT_URL: "http://torrent.tld"
+      # QBITTORRENT_AUTH_USERNAME: ""
+      # QBITTORRENT_AUTH_PASSWORD: ""
+
+      # required for automatic webhook configuration of sonarr and radarr it must be accessible by both, no trailing
+      # slash. If you don't want radarr and sonarr webhook sync, comment out values starting by RADARR, SONARR and
+      # EXTERNAL_URL. You can still use webhook without those but you will need to configure it manually
+      EXTERNAL_URL: "http://yggtorrent_tracker_fixerr.tld:8000"
+      # at which interval to trigger webhook sync, default 30 minutes, set to 0 to disable. Beware even if disabled,
+      # if (RADARR|SONARR)_SYNC_ENABLED to true an initial sync is still done
+      # RADARR_SONARR_SYNC_INTERVAL_SECONDS: "900"
+      # enable both initial and periodic sync
+      RADARR_SYNC_ENABLED: "true"
+      # customize the webhook name
+      # RADARR_WEBHOOK_NAME: "yggtorrent_tracker_fixerr"
+      # no trailing slash
+      RADARR_URL: "https://radarr.tld"
+      # Radarr > Settings > General > Security
+      RADARR_API_KEY: ""
+      # enable both initial and periodic sync
+      SONARR_SYNC_ENABLED: "true"
+      # customize the webhook name
+      # SONARR_WEBHOOK_NAME: "yggtorrent_tracker_fixerr"
+      # no trailing slash
+      SONARR_URL: "https://sonarr.tld"
+      # Sonarr > Settings > General > Security
+      SONARR_API_KEY: ""
+
+      # where to find up-to-date info about old trackers and current tracker, can be url or path
+      # DYNAMIC_SETTINGS_LOCATION: "https://raw.githubusercontent.com/larueli/yggtorrent_tracker_fixerr_data/refs/heads/main/data.json"
+      # at which interval to fetch, default 30 minutes, set to 0 to disable regular fetch
+      # DYNAMIC_SETTINGS_REFRESH_INTERVAL_SECONDS: "900"
+      # you can override any dynamic settings value
+      # no trailing slash, only base url
+      # YGGTORRENT_TRACKER_URL: ""
+      # YGGTORRENT_OLD_TRACKERS_URLS: "['URL1', 'URL2']"
+
+      # at which interval all torrents should be checked for trackers updates, default 30 minutes, set to 0 to disable
+      # beware, even if disabled, if dynamic settings fetch a different set of settings, it will trigger a refresh of
+      # all torrents
+      # ALL_TORRENTS_REFRESH_INTERVAL_SECONDS: "900"
+
+      # Configure httpx https://www.python-httpx.org/environment_variables/
+      # HTTP_PROXY: "http://proxy:3128"
+      # HTTPS_PROXY: "http://proxy:3128"
+      # NO_PROXY: "localhost,127.0.0.1"
+      # SSL_CERT_FILE: "/path/to/ca-certs/ca-bundle.crt"
+      # SSL_CERT_DIR: "/path/to/ca-certs/"
