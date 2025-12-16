@@ -77,15 +77,7 @@ store any data at all.
 
 ## Contribute
 
-Every contribution is welcome ! Check the top badges to see the libraries used in this project, you should have a basic
-understanding of git, Python and object oriented programming. This project uses precommit, commitizen and automated test.
-
-It is strongly recommended to use the devcontainers provided, as they provide all the toolset required to work on the project
-really easily. Use the `classic` if you don't know which one to choose, or `rootless` if using docker-rootless or podman.
-
-Code, text, docs should be written in English.
-
-One thing to do should be implementing new torrent clients (ruTorrent, ...) that implements the `TorrentClient` class
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## License
 
