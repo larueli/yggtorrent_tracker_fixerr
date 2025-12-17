@@ -59,8 +59,8 @@ popularity and the effort I should put in.
 * Edit it to input your passkey (the real one !), your connection settings to your QBittorrent instance, the settings to
 connect to sonarr/radarr (technically optional, but required to automatically create webhooks which allows sonarr/radarr
 to trigger yggtorrent-tracker-fixerr on new downloads)
-* If you want to have radarr and sonarr webhook, you must expose your app (same docker network or reverse proxy) to sonarr and radarr. Configure
-the EXTERNAL_URL variable accordingly.
+* If you want to have radarr and sonarr webhook, you must expose your app (same docker network or reverse proxy) to
+sonarr and radarr. Configure the EXTERNAL_URL variable accordingly.
 * Run : `docker compose up -d --remove-orphans`
 * Enjoy !
 
