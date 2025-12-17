@@ -82,7 +82,6 @@ major_version_zero = true
 [tool.semantic_release]
 version_toml = ["pyproject.toml:project.version"]
 branch = "main"
-changelog_file = "CHANGELOG.md"
 build_command = """
   uv lock --upgrade-package "yggtorrent_tracker_fixerr"
   git add uv.lock
