@@ -7,7 +7,8 @@ ARG APP_UID=1000
 ARG APP_USER=app
 ARG APP_GROUP=app
 
-ADD app.py pyproject.toml README.md uv.lock* yggtorrent_tracker_fixerr /app/
+ADD app.py pyproject.toml README.md uv.lock* yggtorrent_tracker_fixerr/ /app/
+ADD yggtorrent_tracker_fixerr /app/yggtorrent_tracker_fixerr
 ADD entrypoint.sh /entrypoint.sh
 WORKDIR /app
 
