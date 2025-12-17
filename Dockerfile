@@ -1,5 +1,7 @@
+FROM ghcr.io/astral-sh/uv:0.9.13 AS uv
 FROM python:3.14-slim
-COPY --from=ghcr.io/astral-sh/uv:0.9.13 /uv /uvx /bin/
+
+COPY --from=uv /uv /uvx /bin/
 
 ARG APP_UID=1000
 ARG APP_USER=app
