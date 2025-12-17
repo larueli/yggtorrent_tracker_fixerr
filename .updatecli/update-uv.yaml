@@ -1,0 +1,53 @@
+name: Bump uv version used by setup-uv step
+
+scms:
+  repo:
+    kind: github
+    spec:
+      user: "updatecli"
+      email: "updatecli@users.noreply.github.com"
+      owner: larueli
+      repository: yggtorrent_tracker_fixerr
+      branch: main
+      token: '{{ requiredEnv "UPDATECLI_GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "UPDATECLI_GITHUB_USERNAME" }}'
+
+sources:
+  uvLatest:
+    kind: githubRelease
+    spec:
+      owner: astral-sh
+      repository: uv
+      versioning:
+        kind: semver
+      token: '{{ requiredEnv "UPDATECLI_GITHUB_TOKEN" }}'
+
+conditions:
+  uvReleaseFound:
+    kind: source
+    sourceid: uvLatest
+
+targets:
+  bumpUvVersion:
+    name: Update uv version in .github/actions/bootstrap/action.yaml
+    kind: yaml
+    scmid: repo
+    sourceid: uvLatest
+    spec:
+      file: .github/actions/bootstrap/action.yaml
+      engine: yamlpath
+      key: $.runs.steps[?(@.id=="uv")].with.version
+
+actions:
+  openPR:
+    kind: github/pullrequest
+    scmid: repo
+    spec:
+      title: 'chore(deps): bump uv to {{ source "uvLatest" }}'
+      description: |
+        This PR updates the uv version used by `astral-sh/setup-uv` to the latest GitHub release.
+
+        Source: https://github.com/astral-sh/uv/releases
+      labels:
+        - dependencies
+      draft: false
