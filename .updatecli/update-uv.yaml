@@ -22,11 +22,6 @@ sources:
         kind: semver
       token: '{{ requiredEnv "UPDATECLI_GITHUB_TOKEN" }}'
 
-conditions:
-  uvReleaseFound:
-    kind: source
-    sourceid: uvLatest
-
 targets:
   bumpUvVersion:
     name: Update uv version in .github/actions/bootstrap/action.yaml
