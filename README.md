@@ -59,7 +59,7 @@ popularity and the effort I should put in.
 * Edit it to input your passkey (the real one !), your connection settings to your QBittorrent instance, the settings to
 connect to sonarr/radarr (technically optional, but required to automatically create webhooks which allows sonarr/radarr
 to trigger yggtorrent-tracker-fixerr on new downloads)
-* Run : `docker compose up -d --pull --remove-orphans`
+* Run : `docker compose up -d --remove-orphans`
 * Enjoy !
 
 ## Backup
@@ -73,7 +73,8 @@ highly suggested to encrypt your backup.
 * Copy your docker-compose.yml
 * Read release notes to see if there is any change in env values. In doubt reinstall from scratch as the project doesn't
 store any data at all.
-* `docker compose up -d --pull --remove-orphans`
+* `docker compose pull`
+* `docker compose up -d --remove-orphans`
 
 ## Contribute
 
