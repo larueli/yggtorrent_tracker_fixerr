@@ -31,3 +31,15 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: uv run semantic-release version
+
+      - name: Get created tag
+        id: tag
+        run: |
+          git fetch --tags
+          TAG=$(git describe --tags --abbrev=0)
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger image build on created tag
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       run: gh workflow run "cd - Build Image" --ref "${{ steps.tag.outputs.tag }}"
