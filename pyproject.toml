@@ -1,6 +1,6 @@
 [project]
 name = "yggtorrent_tracker_fixerr"
-version = "0.0.0"
+version = "1.0.0"
 description = "Allow automation of YGGTorrent inside arr stack"
 readme = "README.md"
 license = { text = "GPL-3.0-only" }
