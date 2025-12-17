@@ -7,11 +7,7 @@
 version: 2
 updates:
   - package-ecosystem: "devcontainers"
-    directory: "/.devcontainer/classic"
-    schedule:
-      interval: weekly
-  - package-ecosystem: "devcontainers"
-    directory: "/.devcontainer/rootless"
+    directory: "/.devcontainer"
     schedule:
       interval: weekly
   - package-ecosystem: "uv"
