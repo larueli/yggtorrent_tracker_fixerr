@@ -14,10 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/bootstrap
       - run: uv run pre-commit autoupdate
 
-      - uses: peter-evans/create-pull-request@v7
+      - uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "chore: pre-commit autoupdate"
           title: "chore: pre-commit autoupdate"

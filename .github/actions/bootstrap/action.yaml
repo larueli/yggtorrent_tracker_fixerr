@@ -2,11 +2,6 @@ name: Bootstrap env
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v5
-      with:
-          ref: ${{ github.ref_name }}
-          fetch-depth: 0
-
     - name: Set up Python
       id: python
       uses: actions/setup-python@v6
@@ -14,6 +9,7 @@ runs:
           python-version-file: ".python-version"
 
     - name: Install uv
+      id: uv
       uses: astral-sh/setup-uv@v7
       with:
           version: "0.9.13"
