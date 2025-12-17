@@ -24,7 +24,7 @@ services:
       # required for automatic webhook configuration of sonarr and radarr it must be accessible by both, no trailing
       # slash. If you don't want radarr and sonarr webhook sync, comment out values starting by RADARR, SONARR and
       # EXTERNAL_URL. You can still use webhook without those but you will need to configure it manually
-      EXTERNAL_URL: "http://yggtorrent_tracker_fixerr.tld:8000"
+      EXTERNAL_URL: "https://yggtorrent-tracker-fixerr.tld:8000"
       # at which interval to trigger webhook sync, default 30 minutes, set to 0 to disable. Beware even if disabled,
       # if (RADARR|SONARR)_SYNC_ENABLED to true an initial sync is still done
       # RADARR_SONARR_SYNC_INTERVAL_SECONDS: "900"
