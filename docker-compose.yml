@@ -1,6 +1,7 @@
 services:
   application:
     image: ghcr.io/larueli/yggtorrent_tracker_fixerr
+    restart: always
     environment:
       # API for webhook from sonarr and radarr and app health monitoring
       # LISTEN_HOST: "0.0.0.0"
