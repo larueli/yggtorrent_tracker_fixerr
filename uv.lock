@@ -152,7 +152,7 @@ wheels = [
 
 [[package]]
 name = "commitizen"
-version = "4.10.1"
+version = "4.11.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "argcomplete" },
@@ -168,9 +168,9 @@ dependencies = [
     { name = "termcolor" },
     { name = "tomlkit" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ad/bc/cb84a2d87b565964a30c7cdda2f0b467ddecba6953ab868f971560d93d5b/commitizen-4.10.1.tar.gz", hash = "sha256:14d12252970463db2fa7c7e7e4753321190a093e7d5c99efcd1a63be73e3c1f8", size = 57706, upload-time = "2025-12-11T15:25:05.071Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ed/b7/7be4beb3cd3831b228039873b813239d63f3619602ab466d4fb5496a3b68/commitizen-4.11.3.tar.gz", hash = "sha256:b96a4ab7d9ddbd13135004ca63d37e77cce4ad645b7f661a40522edf9caac641", size = 62861, upload-time = "2026-01-13T09:35:40.238Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8b/b9/87d724956c29a3815befdb5beade54cc088c6a54a8475a0b5571fe2ef2ba/commitizen-4.10.1-py3-none-any.whl", hash = "sha256:ed4a377beed63aa4438f7ad5db791f66e117a5f597677a58b27a1c31e9f64fc4", size = 82588, upload-time = "2025-12-11T15:25:03.97Z" },
+    { url = "https://files.pythonhosted.org/packages/f5/02/9b37095b013ff1429b64c1a9aebe2e2327ec7d1790df9d277867714cb12f/commitizen-4.11.3-py3-none-any.whl", hash = "sha256:226dc931ce4af29c3320f878f6e28e647aefabeb45709c710f1aa205ed54b098", size = 84016, upload-time = "2026-01-13T09:35:38.49Z" },
 ]
 
 [[package]]
